@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wxlbear/leaf-webui/issues"
   },
-  "homepage": "https://github.com/wxlbear/leaf-webui#readme"
+  "homepage": "https://github.com/wxlbear/leaf-webui#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
