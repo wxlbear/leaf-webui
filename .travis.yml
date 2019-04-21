@@ -13,3 +13,12 @@ install:
 
 script:
   - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "wxlbear"
+  - git config user.email "1581997923@qq.com"
+  - git add .
+  - git commit -m "static page"
+  - git push --force --quiet "https://${LEAF_TOKEN}@${LEAF_REF}" master:${P_BRANCH}
