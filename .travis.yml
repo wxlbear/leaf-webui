@@ -1,7 +1,7 @@
 language: node_js
 
-node_js: 
-    - '8'
+node_js:
+  - '8'
 
 cache:
   directories:
@@ -9,7 +9,6 @@ cache:
 
 install:
   - npm install
-
 
 script:
   - npm run build
@@ -22,3 +21,10 @@ after_script:
   - git add .
   - git commit -m "static page"
   - git push --force --quiet "https://${LEAF_TOKEN}@${LEAF_REF}" master:${P_BRANCH}
+
+after_success:
+  - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
+  - curl --ftp-create-dirs
+    -T .
+    --key /tmp/sftp_rsa
+    sftp://${SFTP_USER}:${SFTP_PASSWORD}@118.24.64.174/root/deploy
