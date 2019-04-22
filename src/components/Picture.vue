@@ -23,7 +23,6 @@ export default {
     };
   },
   mounted: function() {
-    console.log("mounted");
     get("/pictures/pager", {}, list => {
       var records = list.records;
       records = [

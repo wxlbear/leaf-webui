@@ -12,9 +12,7 @@ export function get(url, params = {}, callback) {
     .then(function(response) {
       callback(response.data);
     })
-    .catch(function(error) {
-      console.log(error);
-    });
+    .catch(function() {});
 }
 
 export function post(url, data = {}, callback) {
@@ -26,9 +24,7 @@ export function post(url, data = {}, callback) {
     .then(function(response) {
       callback(response.data);
     })
-    .catch(function(error) {
-      console.log(error);
-    });
+    .catch(function() {});
 }
 
 export function remove(url, id, callback) {
@@ -40,9 +36,7 @@ export function remove(url, id, callback) {
     .then(function(response) {
       callback(response.data);
     })
-    .catch(function(error) {
-      console.log(error);
-    });
+    .catch(function() {});
 }
 
 export function update(url, data = {}, callback) {
@@ -54,7 +48,5 @@ export function update(url, data = {}, callback) {
     .then(function(response) {
       callback(response.data);
     })
-    .catch(function(error) {
-      console.log(error);
-    });
+    .catch(function() {});
 }
