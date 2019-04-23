@@ -7,6 +7,18 @@ cache:
   directories:
     - node_modules
 
+env:
+  - SERVER_IP_ADDRESS=118.24.64.174
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_d4991618493e_key -iv $encrypted_d4991618493e_iv
+    -in deploy_key.enc -out ./deploy_key -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 ./deploy_key
+  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ssh-add ./deploy_key
+  # test ssh connection for: https://github.com/dwyl/learn-travis/issues/42
+  - ssh -i ./deploy_key root@1118.24.64.174 pwd
 install:
   - npm install
 
